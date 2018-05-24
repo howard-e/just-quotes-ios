@@ -8,16 +8,21 @@
 
 import UIKit
 import BTNavigationDropdownMenu
+import SwiftEventBus
+import RealmSwift
 
 class QuotesViewController: UIViewController {
 	
+	@IBOutlet weak var containerScrollView: UIScrollView!
 	@IBOutlet weak var quoteOfTheDayContainer: UIView!
-	@IBOutlet weak var quoteOfTheDayQuote: UILabel!
-	@IBOutlet weak var quoteOfTheDayAuthor: UILabel!
+	@IBOutlet weak var quoteOfTheDayQuoteLabel: UILabel!
+	@IBOutlet weak var quoteOfTheDayAuthorLabel: UILabel!
 	
-	let menuItems = ["Quote of the Day", "Famous", "Movies", "Random"]
+	let refreshControl = UIRefreshControl()
+	let menuItems = ["Quote Of The Day", "Famous", "Movies", "Random"]
 	
 	var categoryToSegueWith: QuoteCategory!
+	var realm: Realm!
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -30,6 +35,14 @@ class QuotesViewController: UIViewController {
 	}
 	
 	func setUp() {
+		realm = try! Realm()
+		
+		// Refresh Control Setup
+		let attributes: [NSAttributedStringKey: Any] = [NSAttributedStringKey.foregroundColor: UIColor.white]
+		self.refreshControl.attributedTitle = NSAttributedString(string: "Getting the latest Quote Of The Day", attributes: attributes)
+		self.refreshControl.addTarget(self, action: #selector(reloadInformation), for: .valueChanged)
+		self.containerScrollView.refreshControl = refreshControl
+		
 		// Menu Customizations
 		let menuView = BTNavigationDropdownMenu(title: BTTitle.index(0), items: menuItems)
 		self.navigationItem.titleView = menuView
@@ -61,12 +74,59 @@ class QuotesViewController: UIViewController {
 		// QOTD Customizations
 		quoteOfTheDayContainer.roundEdges()
 		quoteOfTheDayContainer.elevate()
+		
+		// Data Loading
+		SwiftEventBus.onMainThread(self, name: EventBusParms.quoteOfTheDay) { result in
+			self.setQuoteOfTheDay()
+			self.refreshControl.endRefreshing()
+		}
+		
+		setQuoteOfTheDay()
+	}
+	
+	func setQuoteOfTheDay() {
+		let qotdCollection = try! realm.objects(QuoteOfTheDay.self)
+		if qotdCollection.count > 0 { // If QOTD exists, inflate it in the container
+			let qotd = qotdCollection[0]
+			self.quoteOfTheDayQuoteLabel.text = qotd.quote
+			self.quoteOfTheDayAuthorLabel.text = "- \(qotd.author)"
+			
+			// Also check if it's a new day since quote was last saved; pull a new quote if it is
+			let originalQuoteDate = qotd.lastUpdate
+			let currentDate = Date()
+			
+			let calendar = Calendar(identifier: .gregorian)
+			let dateCheck = calendar.compare(originalQuoteDate, to: currentDate, toGranularity: .day)
+			switch dateCheck {
+			case .orderedAscending: // Get new QOTD
+				print("ascending (current quote date is in the past)")
+				self.refreshControl.beginRefreshing()
+				getQuoteOfTheDay(controller: self)
+				break
+			case .orderedDescending: // Get new QOTD
+				print("descending (current quote date is in the future .. somehow 🤔)")
+				self.refreshControl.beginRefreshing()
+				getQuoteOfTheDay(controller: self)
+				break
+			case .orderedSame: // Leave current QOTD
+				print("same")
+				self.refreshControl.endRefreshing()
+				break
+			}
+		} else { // Get first QOTD
+			self.refreshControl.beginRefreshing()
+			getQuoteOfTheDay(controller: self)
+		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let destination = segue.destination as? QuoteCategoryViewController {
 			destination.category = self.categoryToSegueWith
 		}
+	}
+	
+	@objc func reloadInformation() {
+		setQuoteOfTheDay()
 	}
 }
 

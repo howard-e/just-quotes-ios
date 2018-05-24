@@ -9,7 +9,7 @@
 import Foundation
 
 enum QuoteCategory: String {
-	case famous = "famous"
-	case movies = "movies"
-	case random = "random"
+	case famous = "Famous"
+	case movies = "Movies"
+	case random = "Random"
 }
