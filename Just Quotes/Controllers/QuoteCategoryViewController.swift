@@ -10,26 +10,31 @@ import UIKit
 
 class QuoteCategoryViewController: UIViewController {
 
+	@IBOutlet weak var quotesTableView: UITableView!
+	
+	var category: QuoteCategory!
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setUpNavigationBar()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		setUp()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+	
+	func setUp() {
+		if let category = category {
+			// Trigger REST call to get quote categories
+			switch category {
+			case .famous:
+				break
+			case .movies:
+				break
+			case .random:
+				break
+			}
+		}
+	}
 }

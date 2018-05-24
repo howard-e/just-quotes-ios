@@ -1,0 +1,109 @@
+PODS:
+  - Alamofire (4.7.2)
+  - BTNavigationDropdownMenu (0.4.1)
+  - Crashlytics (3.10.1):
+    - Fabric (~> 1.7.5)
+  - Fabric (1.7.6)
+  - Firebase/Core (5.0.1):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.0)
+  - Firebase/CoreOnly (5.0.1):
+    - FirebaseCore (= 5.0.1)
+  - FirebaseAnalytics (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.1):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.0.0):
+    - FirebaseCore (~> 5.0)
+  - FoldingCell (3.1.1)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - NVActivityIndicatorView (4.2.1):
+    - NVActivityIndicatorView/Presenter (= 4.2.1)
+  - NVActivityIndicatorView/Presenter (4.2.1)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
+  - SnapKit (4.0.0)
+  - SwiftEventBus (2.2.0)
+  - SwiftyJSON (4.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - BTNavigationDropdownMenu (from `https://github.com/zkrige/BTNavigationDropdownMenu.git`)
+  - Crashlytics
+  - Fabric
+  - Firebase/Core
+  - FoldingCell
+  - NVActivityIndicatorView
+  - RealmSwift
+  - SnapKit (~> 4.0.0)
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `2.2.0`)
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Crashlytics
+    - Fabric
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FoldingCell
+    - GoogleToolboxForMac
+    - nanopb
+    - NVActivityIndicatorView
+    - Realm
+    - RealmSwift
+    - SnapKit
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  BTNavigationDropdownMenu:
+    :git: https://github.com/zkrige/BTNavigationDropdownMenu.git
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.2.0
+
+CHECKOUT OPTIONS:
+  BTNavigationDropdownMenu:
+    :commit: 0e1bd3a84079f1bdec8bffc4db0f383bd9ee7523
+    :git: https://github.com/zkrige/BTNavigationDropdownMenu.git
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.2.0
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  BTNavigationDropdownMenu: 4a88996ad514f2feff98481eb2d6a5cb7520f76c
+  Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
+  Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
+  Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
+  FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
+  FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
+  FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FoldingCell: 238c33ae8d9cd655090c9c4c5ff32596cfd18c6e
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftEventBus: 39cde57d1881f9d6e8afb1f9e41f973e331bf847
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+
+PODFILE CHECKSUM: 488a0d26538a3ef818809d227a67242c38cd4f22
+
+COCOAPODS: 1.5.2
