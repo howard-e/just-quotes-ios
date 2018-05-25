@@ -47,7 +47,7 @@ class QuoteCategoryViewController: UIViewController {
 		// Category Setup
 		if let category = category {
 			// Trigger REST call to get quote categories
-			self.refreshControl.beginRefreshing()
+			self.refreshControl.startRefresh()
 			getQuote(controller: self, category: category)
 		}
 		
@@ -61,6 +61,10 @@ class QuoteCategoryViewController: UIViewController {
 		self.quotesTableView.estimatedRowHeight = 200
 		
 		// Data Loading
+		SwiftEventBus.onMainThread(self, name: EventBusParms.stopRefresh) { result in
+			self.refreshControl.stopRefresh()
+		}
+		
 		SwiftEventBus.onMainThread(self, name: EventBusParms.quote) { result in
 			self.quotesData.removeAll()
 			self.quotesTableView.reloadData()
@@ -73,7 +77,7 @@ class QuoteCategoryViewController: UIViewController {
 			}
 			
 			self.quotesTableView.reloadData()
-			self.refreshControl.endRefreshing()
+			self.refreshControl.stopRefresh()
 			
 			if self.quotesData.count == 0 {
 				// TODO: Show empty collection view error

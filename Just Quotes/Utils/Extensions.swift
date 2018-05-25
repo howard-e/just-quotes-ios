@@ -56,6 +56,20 @@ extension UIViewController {
 	}
 }
 
+extension UIRefreshControl {
+	func stopRefresh() {
+		if self.isRefreshing {
+			self.endRefreshing()
+		}
+	}
+	
+	func startRefresh() {
+		if !self.isRefreshing {
+			self.beginRefreshing()
+		}
+	}
+}
+
 extension UIColor {
 	convenience init(red: Int, green: Int, blue: Int) {
 		assert(red >= 0 && red <= 255, "Invalid red component")

@@ -39,6 +39,7 @@ struct UserDefaultsKeys {
 struct EventBusParms {
 	static let quoteOfTheDay = "quote_of_the_day"
 	static let quote = "quote"
+	static let stopRefresh = "stop_refresh"
 }
 
 struct Colors {

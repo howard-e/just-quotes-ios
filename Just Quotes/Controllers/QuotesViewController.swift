@@ -76,16 +76,20 @@ class QuotesViewController: UIViewController {
 		quoteOfTheDayContainer.elevate()
 		
 		// Data Loading
+		SwiftEventBus.onMainThread(self, name: EventBusParms.stopRefresh) { result in
+			self.refreshControl.stopRefresh()
+		}
+		
 		SwiftEventBus.onMainThread(self, name: EventBusParms.quoteOfTheDay) { result in
 			self.setQuoteOfTheDay()
-			self.refreshControl.endRefreshing()
+			self.refreshControl.stopRefresh()
 		}
 		
 		setQuoteOfTheDay()
 	}
 	
 	func setQuoteOfTheDay() {
-		let qotdCollection = try! realm.objects(QuoteOfTheDay.self)
+		let qotdCollection = realm.objects(QuoteOfTheDay.self)
 		if qotdCollection.count > 0 { // If QOTD exists, inflate it in the container
 			let qotd = qotdCollection[0]
 			self.quoteOfTheDayQuoteLabel.text = qotd.quote
@@ -100,28 +104,30 @@ class QuotesViewController: UIViewController {
 			switch dateCheck {
 			case .orderedAscending: // Get new QOTD
 				print("ascending (current quote date is in the past)")
-				self.refreshControl.beginRefreshing()
+				self.refreshControl.startRefresh()
 				getQuoteOfTheDay(controller: self)
 				break
 			case .orderedDescending: // Get new QOTD
 				print("descending (current quote date is in the future .. somehow 🤔)")
-				self.refreshControl.beginRefreshing()
+				self.refreshControl.startRefresh()
 				getQuoteOfTheDay(controller: self)
 				break
 			case .orderedSame: // Leave current QOTD
 				print("same")
-				self.refreshControl.endRefreshing()
+				self.refreshControl.stopRefresh()
 				break
 			}
 		} else { // Get first QOTD
-			self.refreshControl.beginRefreshing()
+			self.refreshControl.startRefresh()
 			getQuoteOfTheDay(controller: self)
 		}
+		
+		self.refreshControl.stopRefresh()
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let destination = segue.destination as? QuoteCategoryViewController {
-			destination.category = self.categoryToSegueWith
+			destination.category = self.categoryToSegueWith 
 		}
 	}
 	

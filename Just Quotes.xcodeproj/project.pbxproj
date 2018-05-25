@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2BC2C081385F2E112EC4BE0E /* Pods_Just_Quotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2BBFF7BE018476757CA111 /* Pods_Just_Quotes.framework */; };
 		893A367220AF209B002D6961 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 893A367120AF209B002D6961 /* GoogleService-Info.plist */; };
-		89551E9620AF2C13008EC1F2 /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89551E9520AF2C13008EC1F2 /* AppStoryboard.swift */; };
 		89551E9820AF2C79008EC1F2 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89551E9720AF2C79008EC1F2 /* ActivityIndicator.swift */; };
 		89551E9A20AF2CAF008EC1F2 /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89551E9920AF2CAF008EC1F2 /* DataUtils.swift */; };
 		89551E9C20AF2CBA008EC1F2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89551E9B20AF2CBA008EC1F2 /* Utils.swift */; };
@@ -57,7 +56,6 @@
 		4F2BBFF7BE018476757CA111 /* Pods_Just_Quotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Just_Quotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3AADCE3277B90C632CA0D3 /* Pods-Just QuotesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Just QuotesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Just QuotesTests/Pods-Just QuotesTests.release.xcconfig"; sourceTree = "<group>"; };
 		893A367120AF209B002D6961 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		89551E9520AF2C13008EC1F2 /* AppStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
 		89551E9720AF2C79008EC1F2 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		89551E9920AF2CAF008EC1F2 /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		89551E9B20AF2CBA008EC1F2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 			children = (
 				893A367120AF209B002D6961 /* GoogleService-Info.plist */,
 				89551E9720AF2C79008EC1F2 /* ActivityIndicator.swift */,
-				89551E9520AF2C13008EC1F2 /* AppStoryboard.swift */,
 				89551E9D20AF2CC3008EC1F2 /* Constants.swift */,
 				89551E9920AF2CAF008EC1F2 /* DataUtils.swift */,
 				897DE6BD20B71809008A863F /* Enums.swift */,
@@ -494,7 +491,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				897DE6BC20B71678008A863F /* QuoteCategoryViewController.swift in Sources */,
-				89551E9620AF2C13008EC1F2 /* AppStoryboard.swift in Sources */,
 				89551E9A20AF2CAF008EC1F2 /* DataUtils.swift in Sources */,
 				89551E9820AF2C79008EC1F2 /* ActivityIndicator.swift in Sources */,
 				89FE7A1720B74C5800CE2762 /* QuoteCategoryTableViewCell.swift in Sources */,

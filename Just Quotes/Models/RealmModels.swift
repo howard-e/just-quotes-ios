@@ -27,6 +27,7 @@ class Quote: Object {
 	@objc dynamic var quote = ""
 	@objc dynamic var author = ""
 	@objc dynamic var category = ""
+	@objc dynamic var imgUrl = ""
 	
 	override static func primaryKey() -> String? {
 		return "quote" // Using the same API will yield the same quotes

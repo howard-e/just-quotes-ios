@@ -48,15 +48,17 @@ func getQuoteOfTheDay(controller: UIViewController) {
 			
 			SwiftEventBus.post(EventBusParms.quoteOfTheDay)
 		} else {
-			SwiftEventBus.post(EventBusParms.quoteOfTheDay)
-			
 			if let error = (response.error as NSError?) {
 				switch error.code {
 				case -1009:
-					controller.alert(message: "Unable to Continue. Please reconnect and try again.", title: "Internet Connection Required")
+					controller.alert(message: "Please reconnect and try again.", title: "Internet Connection Required", customHandler: { _ in
+						SwiftEventBus.post(EventBusParms.stopRefresh)
+					})
 					break
 				default:
-					controller.alert(message: "Something went wrong. Please try again.", title: "Error")
+					controller.alert(message: "Something went wrong. Please try again.", title: "Error", customHandler: { _ in
+						SwiftEventBus.post(EventBusParms.stopRefresh)
+					})
 					break
 				}
 			}
@@ -111,10 +113,14 @@ func getQuote(controller: UIViewController, category: QuoteCategory) {
 			if let error = (response.error as NSError?) {
 				switch error.code {
 				case -1009:
-					controller.alert(message: "Unable to Continue. Please reconnect and try again.", title: "Internet Connection Required")
+					controller.alert(message: "Please reconnect and try again.", title: "Internet Connection Required", customHandler: { _ in
+						SwiftEventBus.post(EventBusParms.stopRefresh)
+					})
 					break
 				default:
-					controller.alert(message: "Something went wrong. Please try again.", title: "Error")
+					controller.alert(message: "Something went wrong. Please try again.", title: "Error", customHandler: { _ in
+						SwiftEventBus.post(EventBusParms.stopRefresh)
+					})
 					break
 				}
 			}
