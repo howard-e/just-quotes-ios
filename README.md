@@ -35,7 +35,7 @@ Overall, it is an iOS Mobile Application sample intended to test and try out dif
 
 ### Environment Tested Under
 
-OS: macOS High Sierra 10.13.4
-XCODE: 9.3.1
-SWIFTLANG: 4.1
-COCOAPODS: 1.5.2
+- OS: macOS High Sierra 10.13.4
+- XCODE: 9.3.1
+- SWIFTLANG: 4.1
+- COCOAPODS: 1.5.2
