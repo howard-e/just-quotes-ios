@@ -14,7 +14,7 @@ target 'Just Quotes' do
 #  pod 'Firebase/Firestore'
 
   pod 'SnapKit', '~> 4.0.0'
-  pod 'SwiftEventBus', :tag => '2.2.0', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+  pod 'SwiftEventBus', :tag => '3.0.1', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
 
   pod 'NVActivityIndicatorView'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/zkrige/BTNavigationDropdownMenu.git'
